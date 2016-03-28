@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import random
 #from urllib import request
 import time
+import shutil
 
 rname = raw_input("Input Name:- \n")
 pages = int(raw_input("Input Max Pages:- \n"))
@@ -11,11 +12,12 @@ name = xname.lower()
 
 
 def di(url):
-        n=random.randrange(1,500)
-        fullname= name + str(n) + ".jpg"
-        f = open(fullname, 'wb')
-        f.write(request.urlopen(url).read())
-        f.close()
+	n = random.randrange(1,200)
+	full = str(n)+ ".jpg"
+	response = requests.get(url , stream = True)
+	with open('full','wb') as out_file:
+		shutil.copyfileobj(response.raw, out_file)
+	del response
 try:
     def crawler(max):
         i=1;
@@ -41,7 +43,7 @@ try:
 except:
     print("Error")
 
-if __name__ = '__main__':
+if __name__ == '__main__':
 	print("Please Wait... Downloading")
     	crawler(pages)
     	print ("Downloaded!")
