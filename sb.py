@@ -1,9 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import random
-#from urllib import request
 import time
 import shutil
+import os
 
 rname = raw_input("Input Name:- \n")
 pages = int(raw_input("Input Max Pages:- \n"))
@@ -45,7 +45,7 @@ except:
 
 if __name__ == '__main__':
 	print("Please Wait... Downloading")
+        os.mkdir(rname)
+        os.chdir(rname)
     	crawler(pages)
     	print ("Downloaded!")
-
-    
