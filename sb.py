@@ -15,7 +15,7 @@ def di(url):
 	n = random.randrange(1,200)
 	full = str(n)+ ".jpg"
 	response = requests.get(url , stream = True)
-	with open('full','wb') as out_file:
+	with open(full,'wb') as out_file:
 		shutil.copyfileobj(response.raw, out_file)
 	del response
 try:
